@@ -1,42 +1,24 @@
 # -*- encoding: utf-8 -*-
-# stub: ubersmithrb 0.0.1 ruby lib
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'ubersmithrb/version'
 
-Gem::Specification.new do |s|
-  s.name = "ubersmithrb".freeze
-  s.version = "0.0.1"
+Gem::Specification.new do |gem|
+  gem.name          = "ubersmithrb"
+  gem.version       = Ubersmith::VERSION
+  gem.authors       = ["Matt Kennedy"]
+  gem.email         = ["mkennedy@object-brewery.com"]
+  gem.description   = %q{A ruby gem for communicating with the Ubersmith API}
+  gem.summary       = %q{This gem allows a programmer to connect and send commands to an Ubersmith server from their own application.}
+  gem.homepage      = "https://github.com/mchkennedy/ubersmithrb"
+  gem.has_rdoc      = true
+  gem.add_development_dependency  'rspec', '~> 2.5'
+  gem.add_development_dependency  'simplecov', '~> 0.7.1'
+  gem.add_runtime_dependency 'mechanize', '>= 2.5.1'
+  gem.add_runtime_dependency 'json', '>= 1.5.4'
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
-  s.require_paths = ["lib".freeze]
-  s.authors = ["Matt Kennedy".freeze]
-  s.date = "2020-01-07"
-  s.description = "A ruby gem for communicating with the Ubersmith API".freeze
-  s.email = ["mkennedy@object-brewery.com".freeze]
-  s.files = [".gitignore".freeze, "Gemfile".freeze, "LICENSE.txt".freeze, "README.md".freeze, "Rakefile".freeze, "lib/ubersmithrb.rb".freeze, "lib/ubersmithrb/command.rb".freeze, "lib/ubersmithrb/response.rb".freeze, "lib/ubersmithrb/version.rb".freeze, "spec/spec_helper.rb".freeze, "spec/ubersmithrb_spec.rb".freeze, "ubersmithrb.gemspec".freeze]
-  s.homepage = "https://github.com/mchkennedy/ubersmithrb".freeze
-  s.rubygems_version = "3.0.3".freeze
-  s.summary = "This gem allows a programmer to connect and send commands to an Ubersmith server from their own application.".freeze
-  s.test_files = ["spec/spec_helper.rb".freeze, "spec/ubersmithrb_spec.rb".freeze]
-
-  s.installed_by_version = "3.0.3" if s.respond_to? :installed_by_version
-
-  if s.respond_to? :specification_version then
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rspec>.freeze, ["~> 2.5"])
-      s.add_development_dependency(%q<simplecov>.freeze, ["~> 0.7.1"])
-      s.add_runtime_dependency(%q<mechanize>.freeze, [">= 2.5.1"])
-      s.add_runtime_dependency(%q<json>.freeze, [">= 1.5.4"])
-    else
-      s.add_dependency(%q<rspec>.freeze, ["~> 2.5"])
-      s.add_dependency(%q<simplecov>.freeze, ["~> 0.7.1"])
-      s.add_dependency(%q<mechanize>.freeze, [">= 2.5.1"])
-      s.add_dependency(%q<json>.freeze, [">= 1.5.4"])
-    end
-  else
-    s.add_dependency(%q<rspec>.freeze, ["~> 2.5"])
-    s.add_dependency(%q<simplecov>.freeze, ["~> 0.7.1"])
-    s.add_dependency(%q<mechanize>.freeze, [">= 2.5.1"])
-    s.add_dependency(%q<json>.freeze, [">= 1.5.4"])
-  end
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.require_paths = ["lib"]
 end
